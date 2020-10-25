@@ -1,0 +1,16 @@
+{
+  "name": "complemantary_color",
+  "version": "1.0.0",
+  "description": "Your Figma Plugin",
+  "main": "code.js",
+  "scripts": {
+    "build": "tsc"
+  },
+  "author": "",
+  "license": "",
+  "devDependencies": {
+    "@figma/plugin-typings": "^1.17.1",
+    "prettier": "^2.1.2",
+    "typescript": "^4.0.3"
+  }
+}

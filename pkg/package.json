@@ -1,0 +1,15 @@
+{
+  "name": "figma_complementary_color_plugin",
+  "collaborators": [
+    "konojunya <junya03dance@gmail.com>"
+  ],
+  "version": "0.1.0",
+  "files": [
+    "figma_complementary_color_plugin_bg.wasm",
+    "figma_complementary_color_plugin.js",
+    "figma_complementary_color_plugin.d.ts"
+  ],
+  "module": "figma_complementary_color_plugin.js",
+  "types": "figma_complementary_color_plugin.d.ts",
+  "sideEffects": false
+}

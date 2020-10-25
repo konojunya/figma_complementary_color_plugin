@@ -1,0 +1,58 @@
+<style>
+  body {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+  .box {
+    width: 100px;
+    height: 100px;
+  }
+  .text {
+    font-size: 0.75rem;
+  }
+</style>
+
+<div>
+  <p class="text">選択色</p>
+  <div id="select" class="box"></div>
+  <p id="select-rgb" class="text"></p>
+</div>
+<div>
+  <p class="text">補色</p>
+  <div id="complementary" class="box"></div>
+  <p id="complementary-rgb" class="text"></p>
+</div>
+
+<script type="module">
+  import init, {
+    get_complementary_color,
+  } from "https://agitated-rosalind-413dcb.netlify.app/pkg/figma_complementary_color_plugin.js";
+
+  const selectRect = document.getElementById("select");
+  const selectRgb = document.getElementById("select-rgb");
+  const complementaryRect = document.getElementById("complementary");
+  const complementaryRgb = document.getElementById("complementary-rgb");
+
+  window.onmessage = async ({ data: { pluginMessage } }) => {
+    if (pluginMessage.select == null) {
+      return;
+    }
+
+    const { select } = event.data.pluginMessage;
+
+    // select
+    const selectColor = `rgb(${Object.values(select).join(",")})`;
+    selectRgb.textContent = selectColor;
+    selectRect.style.background = selectColor;
+
+    await init();
+
+    const complementary = get_complementary_color(select.r, select.g, select.b);
+
+    // complementary
+    const complementaryColor = `rgb(${complementary.join(",")})`;
+    complementaryRgb.textContent = complementaryColor;
+    complementaryRect.style.background = complementaryColor;
+  };
+</script>
